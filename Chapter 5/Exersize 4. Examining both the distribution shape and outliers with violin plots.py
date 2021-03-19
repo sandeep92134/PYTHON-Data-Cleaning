@@ -3,10 +3,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-pd.set_option('display.width', 80)
-pd.set_option('display.max_columns', 7)
-pd.set_option('display.max_rows', 200)
-pd.options.display.float_format = '{:,.0f}'.format
 nls97 = pd.read_csv("https://raw.githubusercontent.com/sandeep92134/PYTHON-Data-Cleaning/master/Chapter%205/datasets/nls97.csv")
 nls97.set_index("personid", inplace=True)
 covidtotals = pd.read_csv("https://raw.githubusercontent.com/sandeep92134/PYTHON-Data-Cleaning/master/Chapter%205/datasets/covidtotals.csv", parse_dates=["lastdate"])
@@ -55,3 +51,8 @@ myplt.set_xlabel('Highest Degree Attained')
 myplt.set_ylabel('Weeks Worked 2017')
 plt.tight_layout()
 plt.show()
+
+plt.legend(title="", loc="upper center", framealpha=0, fontsize=8)
+sns.violinplot(nls97.gender, nls97.wageincome, hue=nls97.maritalstatuscollapsed, scale="count")
+sns.violinplot(x=nls97.gender, y=nls97.wageincome, hue=nls97.maritalstatuscollapsed, scale="count")
+sns.violinplot(y=nls97.wageincome, x=nls97.gender,  hue=nls97.maritalstatuscollapsed, scale="count")
